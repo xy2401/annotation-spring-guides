@@ -9,6 +9,10 @@
 	<packaging>pom</packaging>
 
 	<name>spring-guides</name>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
 	<modules>
 		<module>drone-aggregator</module>

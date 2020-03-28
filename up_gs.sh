@@ -62,3 +62,35 @@ rsync -rv --exclude=.git ../spring-guides/gs-consuming-web-service/complete/    
 
 
 
+cp -f ../spring-guides/drone-aggregator/README.md                          guides/drone-aggregator.md
+cp -f ../spring-guides/getting-started-guides/README.adoc                  guides/getting-started-guides.adoc
+##cp -f ../spring-guides/getting-started-macros/README.adoc                  guides/getting-started-macros.adoc
+cp -f ../spring-guides/gs-accessing-data-gemfire/README.adoc               guides/gs-accessing-data-gemfire.adoc
+cp -f ../spring-guides/gs-accessing-data-jpa/README.adoc                   guides/gs-accessing-data-jpa.adoc
+cp -f ../spring-guides/gs-accessing-data-mongodb/README.adoc               guides/gs-accessing-data-mongodb.adoc
+cp -f ../spring-guides/gs-accessing-data-mysql/README.adoc                 guides/gs-accessing-data-mysql.adoc
+cp -f ../spring-guides/gs-accessing-data-neo4j/README.adoc                 guides/gs-accessing-data-neo4j.adoc
+cp -f ../spring-guides/gs-accessing-data-r2dbc/README.adoc                 guides/gs-accessing-data-r2dbc.adoc
+cp -f ../spring-guides/gs-accessing-data-rest/README.adoc                  guides/gs-accessing-data-rest.adoc
+cp -f ../spring-guides/gs-accessing-gemfire-data-rest/README.adoc          guides/gs-accessing-gemfire-data-rest.adoc
+cp -f ../spring-guides/gs-accessing-mongodb-data-rest/README.adoc          guides/gs-accessing-mongodb-data-rest.adoc
+cp -f ../spring-guides/gs-accessing-neo4j-data-rest/README.adoc            guides/gs-accessing-neo4j-data-rest.adoc
+cp -f ../spring-guides/gs-accessing-vault/README.adoc                      guides/gs-accessing-vault.adoc
+cp -f ../spring-guides/gs-actuator-service/README.adoc                     guides/gs-actuator-service.adoc
+cp -f ../spring-guides/gs-async-method/README.adoc                         guides/gs-async-method.adoc
+cp -f ../spring-guides/gs-authenticating-ldap/README.adoc                  guides/gs-authenticating-ldap.adoc
+cp -f ../spring-guides/gs-batch-processing/README.adoc                     guides/gs-batch-processing.adoc
+cp -f ../spring-guides/gs-caching/README.adoc                              guides/gs-caching.adoc
+cp -f ../spring-guides/gs-caching-gemfire/README.adoc                      guides/gs-caching-gemfire.adoc
+cp -f ../spring-guides/gs-centralized-configuration/README.adoc            guides/gs-centralized-configuration.adoc
+cp -f ../spring-guides/gs-circuit-breaker/README.adoc                      guides/gs-circuit-breaker.adoc
+cp -f ../spring-guides/gs-client-side-load-balancing/README.adoc           guides/gs-client-side-load-balancing.adoc
+cp -f ../spring-guides/gs-cloud-circuit-breaker/README.adoc                guides/gs-cloud-circuit-breaker.adoc
+cp -f ../spring-guides/gs-consuming-rest/README.adoc                       guides/gs-consuming-rest.adoc
+cp -f ../spring-guides/gs-consuming-rest-angularjs/README.adoc             guides/gs-consuming-rest-angularjs.adoc
+cp -f ../spring-guides/gs-consuming-rest-jquery/README.adoc                guides/gs-consuming-rest-jquery.adoc
+cp -f ../spring-guides/gs-consuming-rest-restjs/README.adoc                guides/gs-consuming-rest-restjs.adoc
+cp -f ../spring-guides/gs-consuming-web-service/README.adoc                guides/gs-consuming-web-service.adoc
+
+
+
