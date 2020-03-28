@@ -15,11 +15,11 @@
 :source-highlighter: prettify
 :project_id: gs-caching
 
-This guide walks you through the process of enabling caching on a Spring managed bean.
+本指南将引导您完成在Spring托管Bean上启用缓存的过程。
 
 == What You Will build
 
-You will build an application that enables caching on a simple book repository.
+您将构建一个应用程序，该应用程序可以在简单的 book repository 上进行缓存。
 
 
 == What You need
@@ -66,8 +66,8 @@ include::complete/build.gradle[]
 [[initial]]
 == Create a Book Repository
 
-First, you need to create a simple model for your book. The following listing (from
-`src/main/java/com/example/caching/Book.java`) shows how to do so:
+首先，您需要为您的 book 创建一个简单的 model 。以下清单 (来自
+`src/main/java/com/example/caching/Book.java`) 展示了如何做:
 
 ====
 [source,java,tabsize=2]
@@ -76,8 +76,8 @@ include::initial/src/main/java/com/example/caching/Book.java[]
 ----
 ====
 
-You also need a repository for that model. The following listing (from
-`src/main/java/com/example/caching/BookRepository.java`) shows such a repository:
+您还需要该 model 的 repository 。 以下清单 (来自
+`src/main/java/com/example/caching/BookRepository.java`) 显示了这样的存储库:
 
 ====
 [source,java,tabsize=2]
@@ -86,11 +86,11 @@ include::initial/src/main/java/com/example/caching/BookRepository.java[]
 ----
 ====
 
-You could have used {SpringData}[Spring Data] to provide an implementation of your
-repository over a wide range of SQL or NoSQL stores. However, for the purpose of this
-guide, you will simply use a naive implementation that simulates some latency
-(network service, slow delay, or other issues). The following listing (from
-`src/main/java/com/example/caching/SimpleBookRepository.java`) shows such a repository:
+您可以使用  {SpringData}[Spring Data] 提供您的实现
+各种SQL或NoSQL存储的 repository . 但是，为此目的
+指南中, 您将简单使用模拟某些延迟的原生的实现
+(网络服务，延迟缓慢或其他问题). 以下清单 (来自
+`src/main/java/com/example/caching/SimpleBookRepository.java`) 显示了这样的 repository:
 
 ====
 [source,java,tabsize=2]
@@ -99,13 +99,13 @@ include::initial/src/main/java/com/example/caching/SimpleBookRepository.java[]
 ----
 ====
 
-`simulateSlowService` deliberately inserts a three-second delay into each `getByIsbn`
-call. Later on, you will speed up this example with caching.
+`simulateSlowService` 故意在每个  `getByIsbn`调用中故意插入三秒钟的延迟. 
+稍后，您将通过缓存来加速此示例。
 
 == Using the Repository
 
-Next, you need to wire up the repository and use it to access some books. The following
-listing (from `src/main/java/com/example/caching/CachingApplication.java`) shows how to do
+接下来，您需要连接 repository 并使用它来访问一些 book 。 
+以下清单 (来自 `src/main/java/com/example/caching/CachingApplication.java`) 展示了怎么做
 so:
 
 ====
@@ -117,8 +117,8 @@ include::initial/src/main/java/com/example/caching/CachingApplication.java[]
 
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/spring-boot-application-new-path.adoc[]
 
-You also need a {runner}[`CommandLineRunner`] that injects the `BookRepository` and calls
-it several times with different arguments. The following listing (from
+您还需要一个 {runner}[`CommandLineRunner`] 来注入  `BookRepository` 并使用不同的参数多次调用它.
+以下清单 (来自 
 `src/main/java/com/example/caching/AppRunner.java`) shows that class:
 
 ====
@@ -128,9 +128,8 @@ include::complete/src/main/java/com/example/caching/AppRunner.java[]
 ----
 ====
 
-If you try to run the application at this point, you should notice that it is quite slow,
-even though you are retrieving the exact same book several times. The following sample
-output shows the three-second delay that our (intentionally awful) code created:
+如果您此时尝试运行该应用程序，则应注意它运行很慢，
+即使您多次检索同一本书也是一样。 以下示例输出显示了我们的（故意糟糕的）代码创建的三秒延迟：
 
 ====
 ----
@@ -141,14 +140,16 @@ output shows the three-second delay that our (intentionally awful) code created:
 ----
 ====
 
-We can improve the situation by enabling caching.
+我们可以通过启用缓存来改善这种情况。
 
 == Enable caching
 
-Now you can enable caching on your `SimpleBookRepository` so that the books are cached
-within the `books` cache. The following listing (from
-`src/main/java/com/example/caching/SimpleBookRepository.java`) shows the repository
-definition:
+Now you can enable caching on your `SimpleBookRepository` so that the books are cached within the `books` cache. The following listing (from
+`src/main/java/com/example/caching/SimpleBookRepository.java`) shows the repository definition:
+
+现在，您可以在 `SimpleBookRepository` 上启用缓存，以便将 book 缓存在 `books` 缓存中。 
+以下清单（来自`src/main/java/com/example/caching/SimpleBookRepository.java`）
+显示了存储库定义：
 
 ====
 [source,java,tabsize=2]
@@ -157,8 +158,8 @@ include::complete/src/main/java/com/example/caching/SimpleBookRepository.java[]
 ----
 ====
 
-You now need to enable the processing of the caching annotations, as the following example
-(from `src/main/java/com/example/caching/CachingApplication.java`) shows how to do:
+现在，您需要启用对缓存批注的处理，如以下示例
+（来自  `src/main/java/com/example/caching/CachingApplication.java` ）所示：
 
 ====
 [source,java,tabsize=2]
@@ -167,22 +168,26 @@ include::complete/src/main/java/com/example/caching/CachingApplication.java[]
 ----
 ====
 
-The {EnableCaching}[`@EnableCaching`] annotation triggers a post-processor that
-inspects every Spring bean for the presence of caching annotations on public
-methods. If such an annotation is found, a proxy is automatically created to intercept
-the method call and handle the caching behavior accordingly.
+{EnableCaching}[`@EnableCaching`] 注解会触发一个后处理器，
+该处理器检查每个Spring bean是否存在公共方法上的缓存注释。
+ 如果找到了这样的注释，则会自动创建一个代理来拦截方法调用并相应地处理缓存行为。
 
 The post-processor handles the  {Cacheable}[`@Cacheable`], {CachePut}[`@CachePut`] and
 {CacheEvict}[`@CacheEvict`] annotations. You can refer to the Javadoc and
 {documentation}[the reference guide] for more detail.
 
-Spring Boot automatically configures a suitable {CacheManager}[`CacheManager`] to serve as
-a provider for the relevant cache. See {bootcaching}[the Spring Boot documentation] for
-more detail.
+后处理器处理 {Cacheable}[`@Cacheable`], {CachePut}[`@CachePut`] 和{CacheEvict}[`@CacheEvict`] 注解。
+ 您可以参考 Javadoc 和
+{documentation}[the reference guide]了解更多详细信息。
 
-Our sample does not use a specific caching library, so our cache store is the simple
-fallback that uses `ConcurrentHashMap`. The caching abstraction supports a wide range of
-cache libraries and is fully compliant with JSR-107 (JCache).
+Spring Boot自动配置合适的 {CacheManager}[`CacheManager`] 用作相关缓存的提供程序。
+ 有关更多详细信息，请参见 {bootcaching}[the Spring Boot documentation] 。
+
+Spring Boot自动配置合适的  {CacheManager}[`CacheManager`]  用作相关缓存的提供程序。 
+有关更多详细信息，请参见 {bootcaching}[the Spring Boot documentation] 。
+
+我们的示例未使用特定的缓存库，因此我们的缓存存储是使用 `ConcurrentHashMap` 的简单后备。 
+缓存抽象支持广泛的缓存库，并且完全符合 JSR-107 (JCache)。
 
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_subhead.adoc[]
 
@@ -190,9 +195,9 @@ include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/
 
 == Test the Application
 
-Now that caching is enabled, you can run the application again and see the difference by
-adding additional calls with or without the same ISBN. It should make a huge difference.
-The following listing shows the output with caching enabled:
+现在启用了缓存，您可以再次运行该应用程序，并通过添加带有或不带有相同ISBN的其他调用来查看区别。 
+它应该产生巨大的变化。
+以下清单显示了启用了缓存的输出：
 
 ====
 ----
@@ -206,17 +211,16 @@ The following listing shows the output with caching enabled:
 ----
 ====
 
-In the preceding sample output, the first retrieval of a book still takes three seconds.
-However, the second and subsequent times for the same book are much faster, showing that
-the cache is doing its job.
+在前面的示例输出中，书籍的第一次检索仍然需要三秒钟。
+但是，同一本书的第二次和后续时间要快得多，这表明缓存正在完成其工作。
 
 == Summary
 
-Congratulations! You've just enabled caching on a Spring managed bean.
+恭喜你！ 您刚刚在Spring托管的bean上启用了缓存。
 
 == See Also
 
-The following guides may also be helpful:
+以下指南也可能会有所帮助：
 
 * https://spring.io/guides/gs/caching-gemfire/[Caching Data with Gemfire]
 * https://spring.io/guides/gs/serving-web-content/[Serving Web Content with Spring MVC]
