@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.xy2401.annotation</groupId>
+	<artifactId>annotation-spring-guides</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>spring-guides</name>
+
+	<modules>
+		<module>drone-aggregator</module>
+		<module>getting-started-guides</module>
+		<module>getting-started-macros</module>
+		<module>gs-accessing-data-gemfire</module>
+		<module>gs-accessing-data-jpa</module>
+		<module>gs-accessing-data-mongodb</module>
+		<module>gs-accessing-data-mysql</module>
+		<module>gs-accessing-data-neo4j</module>
+		<module>gs-accessing-data-r2dbc</module>
+		<module>gs-accessing-data-rest</module>
+		<module>gs-accessing-gemfire-data-rest</module>
+		<module>gs-accessing-mongodb-data-rest</module>
+		<module>gs-accessing-neo4j-data-rest</module>
+		<module>gs-accessing-vault</module>
+		<module>gs-actuator-service</module>
+		<module>gs-async-method</module>
+		<module>gs-authenticating-ldap</module>
+		<module>gs-batch-processing</module>
+		<module>gs-caching</module>
+		<module>gs-caching-gemfire</module>
+		<module>gs-centralized-configuration</module>
+		<module>gs-circuit-breaker</module>
+		<module>gs-client-side-load-balancing</module>
+		<module>gs-cloud-circuit-breaker</module>
+		<module>gs-consuming-rest</module>
+		<module>gs-consuming-rest-angularjs</module>
+		<module>gs-consuming-rest-jquery</module>
+		<module>gs-consuming-rest-restjs</module>
+		<module>gs-consuming-web-service</module>
+	</modules>
+</project>
